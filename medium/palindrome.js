@@ -4,6 +4,31 @@
 */
 
 function isPalindrome(str) {
+
+  if(str.length == 0){
+    return true;
+  }
+  else{
+    let stringCopy = str.split(' ').join('').toLowerCase();
+    for(let i=0; i<stringCopy.length; i++){
+      if(97 <= stringCopy.charCodeAt(i) && stringCopy.charCodeAt(i) <= 122){
+        continue;
+      }
+      else{
+        stringCopy = stringCopy.replace(stringCopy.charAt(i), '');
+      }
+    }
+    console.log(stringCopy);
+
+    for(let i=0; i<stringCopy.length; i++){
+      let charFromStart = stringCopy.charAt(i);
+      let charFromEnd = stringCopy.charAt(stringCopy.length - (1+i));
+      console.log(`${charFromStart} ${charFromEnd}`);
+      if(charFromEnd !== charFromStart){
+        return false;
+      }
+    }
+  }
   return true;
 }
 
